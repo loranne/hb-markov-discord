@@ -82,4 +82,6 @@ async def on_message(message):
     if message.content.startswith("hi"):
         await message.channel.send("Hello!")
 
+os.environ.get("DISCORD_TOKEN")
+
 client.run(os.environ["DISCORD_TOKEN"])
