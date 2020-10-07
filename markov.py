@@ -65,20 +65,21 @@ text = open_and_read_file(filenames)
 # Get a Markov chain
 chains = make_chains(text)
 
+import os
 import discord
 
 client = discord.Client()
 
 @client.event
 async def on_ready():
-    print("We have logged in as {0.user}".format(client))
+    print(f"Connected! Logged in as {client.user}")
 
 @client.event
 async def on_message(message):
     if message.author == client.user:
         return
     
-    if message.content.startswith("$hello"):
+    if message.content.startswith("hi"):
         await message.channel.send("Hello!")
 
-client.run("NzYzNTMyMDQxOTAzMDEzOTA5.X35EoA.XzH_2fU-bTdSuAm6CPLxbfL1_wY")
+client.run(os.environ["DISCORD_TOKEN"])
